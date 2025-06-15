@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Mời Lễ Tốt Nghiệp</title>
+    <!-- Font Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Nền toàn trang */
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(45deg, #ffecd2, #fcb69f);
+            overflow: auto;
+        }
+
+        /* Thiệp mời */
+        .invitation-card {
+            width: 90%;
+            max-width: 450px;
+            min-width: 280px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            text-align: center;
+            padding: 25px;
+            position: relative;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Ảnh chính */
+        .invitation-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid #ffd700;
+            transition: transform 0.3s ease;
+        }
+
+        .invitation-card img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Tiêu đề */
+        .invitation-card h1 {
+            font-size: 28px;
+            color: #c0392b;
+            margin: 20px 0 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Châm ngôn */
+        .invitation-card .motto {
+            font-size: 16px;
+            color: #2980b9;
+            font-style: italic;
+            margin: 10px 0;
+            padding: 0 20px;
+        }
+
+        /* Tên người mời */
+        .invitation-card .recipient {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e67e22;
+            margin: 15px 0;
+            text-decoration: underline;
+        }
+
+        /* Thông tin chi tiết */
+        .invitation-card .details {
+            font-size: 16px;
+            color: #2c3e50;
+            line-height: 1.6;
+            margin: 15px 0;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        .invitation-card .footer {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 20px;
+            font-style: italic;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Hiệu ứng confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #f1c40f;
+            border-radius: 50%;
+            animation: confettiFall 3s infinite;
+        }
+
+        .confetti:nth-child(2) { background: #e74c3c; left: 20%; animation-delay: 0.5s; }
+        .confetti:nth-child(3) { background: #3498db; left: 40%; animation-delay: 1s; }
+        .confetti:nth-child(4) { background: #2ecc71; left: 60%; animation-delay: 1.5s; }
+
+        /* Tối ưu cho điện thoại */
+        @media (max-width: 400px) {
+            .invitation-card h1 {
+                font-size: 22px;
+            }
+            .invitation-card img {
+                height: 180px;
+            }
+            .invitation-card .details {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Thiệp mời -->
+    <div class="invitation-card">
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <img src="assets/images/graduation.jpg" alt="Hình ảnh lễ tốt nghiệp">
+        <h1>Chúc Mừng Tốt Nghiệp 2025!</h1>
+        <p class="motto">"Học hành khổ cực, giờ là lúc tung hoành!"</p>
+        <p class="recipient">Kính mời: [Tên người được mời]</p>
+        <p class="details">
+            <strong>Thời gian:</strong> 9:00 AM, Chủ nhật, ngày 20 tháng 6 năm 2025<br>
+            <strong>Địa điểm:</strong> Hội trường Đại học ABC, Số 123, Đường XYZ, TP. Hà Nội
+        </p>
+        <p class="footer">Cùng đến và ăn mừng, vì tấm bằng này đáng giá cả một trời mồ hôi!</p>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name') || '[Tên người được mời]';
+        document.querySelector('.recipient').textContent = `Kính mời: ${name}`;
+    </script>
+</body>
+</html>

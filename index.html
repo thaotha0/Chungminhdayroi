@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Ảnh Vui Tốt Nghiệp</title>
+    <style>
+        /* Nền gradient vui tươi */
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: auto;
+        }
+
+        /* Tiêu đề chính */
+        h1 {
+            font-size: 2.5rem;
+            color: #e91e63;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        /* Lưới hiển thị ảnh */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        /* Hiệu ứng ảnh ngộ nghĩnh */
+        .photo {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            animation: wiggle 2s infinite alternate;
+        }
+
+        @keyframes wiggle {
+            0% { transform: rotate(-3deg); }
+            100% { transform: rotate(3deg); }
+        }
+
+        .photo:hover {
+            transform: scale(1.2);
+            z-index: 10;
+        }
+
+        /* Nút xem thông tin */
+        .button-container {
+            margin: 20px 0;
+        }
+
+        .info-button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+            background: #ff6b6b;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+        }
+
+        .info-button:hover {
+            background: #ff8787;
+        }
+
+        /* Link đến thiệp mời */
+        .invitation-link {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #2980b9;
+            text-decoration: none;
+            border-bottom: 2px dotted #2980b9;
+        }
+
+        .invitation-link:hover {
+            color: #3498db;
+        }
+
+        /* Hiệu ứng confetti */
+        .confetti {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #f1c40f;
+            border-radius: 50%;
+            animation: confettiFall 4s infinite;
+        }
+
+        .confetti:nth-child(2) { background: #e74c3c; left: 15%; animation-delay: 0.8s; }
+        .confetti:nth-child(3) { background: #3498db; left: 30%; animation-delay: 1.2s; }
+        .confetti:nth-child(4) { background: #2ecc71; left: 45%; animation-delay: 1.6s; }
+
+        /* Giảm số confetti để tối ưu hiệu năng */
+        @keyframes confettiFall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(800px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Tối ưu cho điện thoại */
+        @media (max-width: 600px) {
+            .photo-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+            .photo {
+                width: 120px;
+                height: 120px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hiệu ứng confetti -->
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <!-- Tiêu đề -->
+    <h1>Chào Mừng Đến Với Lễ Tốt Nghiệp Vui Nhộn!</h1>
+    <!-- Lưới ảnh ngộ nghĩnh -->
+    <div class="photo-gallery">
+        <img class="photo" src="assets/images/grad_cap.jpg" alt="Mũ Tốt Nghiệp">
+        <img class="photo" src="assets/images/happy_student.jpg" alt="Sinh Viên Vui Vẻ">
+        <img class="photo" src="assets/images/diploma.jpg" alt="Bằng Cấp Cool">
+        <img class="photo" src="assets/images/grad_party.jpg" alt="Tiệc Tốt Nghiệp">
+    </div>
+    <!-- Nút và link -->
+    <div class="button-container">
+        <button class="info-button" onclick="playMusic()" aria-label="Phát nhạc và xem thông tin thiệp mời">Xem Thông Tin Thiệp Mời</button>
+        <a class="invitation-link" href="invitation.html">Đi đến thiệp mời chính thức</a>
+    </div>
+    <!-- Nhạc nền -->
+    <audio id="bgMusic" src="assets/audio/celebration.mp3" preload="auto"></audio>
+    <script>
+        function playMusic() {
+            const music = document.getElementById('bgMusic');
+            music.play().catch(error => {
+                console.log("Lỗi phát nhạc:", error);
+                alert("Không thể phát nhạc. Vui lòng kiểm tra trình duyệt!");
+            });
+            alert("Thông tin thiệp mời đã sẵn sàng! Nhấn vào link bên dưới để xem chi tiết!");
+        }
+    </script>
+</body>
+</html>
